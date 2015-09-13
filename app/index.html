@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src='/socket.io/socket.io.js'></script>
+  <script src='/public/js/main.js'></script>
+  <title>Document</title>
+</head>
+<body>
+  <h1>My app</h1>
+  <div id="messages"></div>
+
+
+  <form class="" onsubmit="return addMessage(this)">
+    <div class="username">
+      <input type="text" id="username" placeholder="Your name" value="Guest" required='required'>
+    </div>
+
+    <div class="link">
+      <input type="text" id="linkAddress" placeholder="Link..." value="" required>
+    </div>
+
+    <div class="message-input">
+      <textarea id="userMessage" placeholder='Enter a message'></textarea>
+    </div>
+
+    <input type="submit" class="sendMessageBtn" name="name" value="Send!">
+  </form>
+</body>
+</html>
