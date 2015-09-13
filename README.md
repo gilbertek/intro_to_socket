@@ -1,13 +1,22 @@
-# Websockets
+# Sockets Io Intro
 # Shares data quickly and efficiently
 
+## Install packages
+```
 npm install -S express socket.io
+```
+
+## For fast reload
+```
+npm install -b nodemon
+```
 
 
-# Generate sample data
+## Generate sample data
 
 ```
 http://beta.json-generator.com/
+```
 ```
 [
   {
@@ -25,3 +34,9 @@ http://beta.json-generator.com/
     }
   }
 ]
+```
+
+## Testing
+```
+nodemon server/main.js
+```
