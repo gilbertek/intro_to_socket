@@ -16,8 +16,26 @@ function addMessage(msg) {
 
   fs.readFile(msgFile, function (err, data) {
     if (err) throw err;
-    tmp = JSON.parse(data.toString())
-    tmp.push(msg);
+    var tmp = JSON.parse(data.toString())
+
+    var existingMsg = tmp.filter(function (message) {
+      return message.messageId === msg.messageId;
+    })[0];
+
+    console.log(existingMsg);
+
+
+    if (existingMsg) {
+      console.log(existingMsg);
+
+      for (var attrname in existingMsg) {
+        existingMsg[attrname] = msg[attrname];
+      }
+
+      console.log(existingMsg);
+    } else {
+      tmp.push(msg);
+    }
 
     fs.writeFile(msgFile, JSON.stringify(tmp, null, 4), function(err){
         if (err) throw err;
@@ -34,6 +52,17 @@ io.on('connection', function(socket) {
     console.log(data);
     addMessage(data);
     io.sockets.emit('messages', loadMessages());
+  });
+
+  socket.on('updateMessage', function(data) {
+    console.log(data);
+    var messages = loadMessages();
+    var msg = messages.filter(function (message) {
+      return message.messageId === data.messageId;
+    })[0];
+    msg.likedBy = data.likedBy;
+    io.sockets.emit('messages', loadMessages());
+    addMessage(data);
   });
 });
 

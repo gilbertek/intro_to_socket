@@ -3,7 +3,7 @@
 
 ## Install packages
 ```
-npm install -S express socket.io
+npm install -S express socket.io uuid
 ```
 
 ## For fast reload
@@ -20,7 +20,7 @@ http://beta.json-generator.com/
 ```
 [
   {
-    'repeat:20': {
+    'repeat:10': {
       userId: '{{index() + 1}}',
       messageId: '{{guid()}}',
       isActive: '{{bool()}}',
